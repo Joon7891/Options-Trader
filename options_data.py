@@ -58,7 +58,19 @@ def get_puts(ticker, maturity_value):
     return __parse_options_table(table)
 
 def get_all_calls(ticker):
-    pass
+    maturities = get_maturities(ticker)
+
+    calls = {}
+    for _, value in maturities:
+        calls[value] = get_calls(ticker, value)
+    
+    return calls
 
 def get_all_puts(ticker):
-    pass
+    maturities = get_maturities(ticker)
+
+    puts = {}
+    for _, value in maturities:
+        puts[value] = get_puts(ticker, value)
+
+    return puts

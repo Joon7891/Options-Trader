@@ -1,3 +1,3 @@
-import option_price
+import options_data as od
 
-print(option_price.get_puts('TSLA', '1626393600'))
+print(od.get_puts('TSLA', '1626393600'))
