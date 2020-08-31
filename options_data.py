@@ -16,9 +16,16 @@ __data_columns = [
     'Implied Volatility'
 ]
 
+def validate_ticker(ticker):
+    pass
+
 def get_maturities(ticker):
     req = requests.get(f'https://finance.yahoo.com/quote/{ticker}/options')
+    print(req)
+
     soup = BeautifulSoup(req.content, 'html.parser')
+    print(soup)
+    
     date_div = soup.find('div', class_='option-contract-control')
     
     maturities = []

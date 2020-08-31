@@ -1,3 +1,7 @@
-import options_data as od
+from app import App
+from options_data import *
 
-print(od.get_puts('TSLA', '1626393600'))
+get_maturities('NIASD')
+
+app = App()
+app.mainloop()
