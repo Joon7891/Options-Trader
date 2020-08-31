@@ -17,15 +17,14 @@ __data_columns = [
 ]
 
 def validate_ticker(ticker):
-    pass
+    req = requests.get(f'https://finance.yahoo.com/quote/{ticker}/options')
+    soup = BeautifulSoup(req.content, 'html.parser')    
+    date_div = soup.find('div', class_='option-contract-control')
+    return date_div != None
 
 def get_maturities(ticker):
     req = requests.get(f'https://finance.yahoo.com/quote/{ticker}/options')
-    print(req)
-
-    soup = BeautifulSoup(req.content, 'html.parser')
-    print(soup)
-    
+    soup = BeautifulSoup(req.content, 'html.parser')    
     date_div = soup.find('div', class_='option-contract-control')
     
     maturities = []
